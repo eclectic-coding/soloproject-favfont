@@ -1,0 +1,21 @@
+{
+  "name": "soloproject-favfont",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:eclectic-coding/soloproject-favfont.git",
+  "author": {
+    "name": "Chuck Smith",
+    "email": "chuck@eclecticsaddlebag.com>"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel serve ./src/index.html --port 3000 --open",
+    "dev": "npm run clean && npm run start",
+    "build": "parcel build src/index.html",
+    "clean": "rm -rf ./.parcel-cache ./dist"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0",
+    "parcel-bundler": "^1.12.4"
+  }
+}
