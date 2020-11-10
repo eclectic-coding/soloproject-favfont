@@ -1,0 +1,35 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &__brand {
+    padding: 1rem;
+    font-size: 22px;
+    font-weight: bolder;
+
+    a {
+      text-decoration: none;
+    }
+
+  }
+
+  &__menu {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .item {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    font-size: 2rem;
+    color: red;
+    display: none;
+  }
+}
