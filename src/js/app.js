@@ -4,6 +4,7 @@ const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const fontSearch = document.getElementById('font-search');
 const changeText = document.getElementById('input-text');
 const fontSize = document.getElementById('font-size');
+const resetIcon = document.getElementById('reset-ui')
 
 // Variables
 let fontCard = document.getElementById('card-array');
@@ -41,8 +42,8 @@ const filterItems = (arr, query) => {
 
 // Change sample text
 changeText.addEventListener('input', (event) => {
-  const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   let formValue = event.target.value;
+  const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 
   event.preventDefault();
   textField.forEach((text) => {
@@ -56,7 +57,24 @@ fontSize.addEventListener('input', (event) => {
   let currentFontSize = event.target.value;
 
   textField.forEach(text => {
-    text.style.fontSize =currentFontSize
+    text.style.fontSize = currentFontSize
+  })
+});
+
+// Reset UI
+resetIcon.addEventListener('click', () => {
+  // Reset font size
+  const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+
+  textField.forEach(text => {
+    text.style.fontSize = "20px"
   })
 
-});
+  // Reset custom text
+  textField.forEach(text => {
+    text.textContent = originalSampleText;
+  })
+
+})
+
+

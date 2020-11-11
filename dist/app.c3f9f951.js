@@ -197,7 +197,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var fontSearch = document.getElementById('font-search');
 var changeText = document.getElementById('input-text');
-var fontSize = document.getElementById('font-size'); // Variables
+var fontSize = document.getElementById('font-size');
+var resetIcon = document.getElementById('reset-ui'); // Variables
 
 var fontCard = document.getElementById('card-array'); // Load fonts
 
@@ -218,8 +219,8 @@ var filterItems = function filterItems(arr, query) {
 
 
 changeText.addEventListener('input', function (event) {
-  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   var formValue = event.target.value;
+  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   event.preventDefault();
   textField.forEach(function (text) {
     text.textContent = formValue;
@@ -231,6 +232,18 @@ fontSize.addEventListener('input', function (event) {
   var currentFontSize = event.target.value;
   textField.forEach(function (text) {
     text.style.fontSize = currentFontSize;
+  });
+}); // Reset UI
+
+resetIcon.addEventListener('click', function () {
+  // Reset font size
+  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+  textField.forEach(function (text) {
+    text.style.fontSize = "20px";
+  }); // Reset custom text
+
+  textField.forEach(function (text) {
+    text.textContent = originalSampleText;
   });
 });
 },{"../data/fontData":"data/fontData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -261,7 +274,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37257" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
