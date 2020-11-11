@@ -375,8 +375,52 @@ footer {
     display: none; }
 
 main {
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4rem;
+  margin: 4rem auto;
   padding: 0 2rem; }
+  @media (max-width: 968px) {
+    main {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 768px) {
+    main {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 568px) {
+    main {
+      grid-template-columns: 1fr; } }
+
+.card {
+  border-top: 2px solid black; }
+  .card__title {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 0; }
+    .card__title h2 {
+      margin: 0; }
+    .card__title span {
+      padding-top: 10px; }
+  .card__icon {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    color: red;
+    cursor: pointer; }
+  .card__subtitle {
+    margin: 0;
+    font-weight: normal;
+    color: #999999; }
+  .card__bodytext {
+    font-weight: normal;
+    padding: 0 1rem;
+    font-size: 20px; }
+    .card__bodytext--medium {
+      font-size: 24px; }
+    .card__bodytext--large {
+      font-size: 32px; }
+    .card__bodytext--xlarge {
+      font-size: 40px; }
 
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */

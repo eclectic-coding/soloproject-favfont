@@ -117,79 +117,115 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"data/fontData.js":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var fontData = [{
+  id: 1,
+  name: 'Roboto',
+  fallback: 'san-serif',
+  designer: 'Christian Robertson'
+}, {
+  id: 2,
+  name: 'Goldman',
+  fallback: 'cursive',
+  designer: 'Lam Bao, Duy Dao, Yellow Type Foundry'
+}, {
+  id: 3,
+  name: 'Xanh Mono',
+  designer: 'Lam Bao, Duy Dao, Yellow Type Foundry'
+}, {
+  id: 4,
+  name: 'Open Sans',
+  designer: 'Steve Matteson'
+}, {
+  id: 5,
+  name: 'Big Shoulder Stencil Text',
+  designer: 'Patric King'
+}, {
+  id: 6,
+  name: 'Noto Sans JP',
+  designer: 'Google'
+}, {
+  id: 7,
+  name: 'Lato',
+  designer: 'Łukasz Dziedzic'
+}, {
+  id: 8,
+  name: 'Source Sans Pro',
+  designer: 'Paul D. Hunt'
+}, {
+  id: 9,
+  name: 'Oswald',
+  designer: 'Vernon Adams, Kalapi Gajjar, Cyreal'
+}, {
+  id: 10,
+  name: 'Poppins',
+  designer: 'Indian Type Foundry, Jonny Pinhorn'
+}, {
+  id: 11,
+  name: 'Raleway',
+  designer: 'Multiple Designers'
+}, {
+  id: 12,
+  name: 'Merriweather',
+  designer: 'Sorkin Type'
+}];
+var _default = fontData;
+exports.default = _default;
+},{}],"js/app.js":[function(require,module,exports) {
+"use strict";
 
-  return bundleURL;
-}
+var _fontData = _interopRequireDefault(require("../data/fontData"));
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
+var originalSampleText = 'Almost before we knew it, we had left the ground.';
+var fontSearch = document.getElementById('font-search');
+var changeText = document.getElementById('input-text');
+var fontSize = document.getElementById('font-size'); // Variables
 
-  return '/';
-}
+var fontCard = document.getElementById('card-array'); // Load fonts
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
+var getFont = function getFont() {
+  _fontData.default.map(function (font) {
+    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
+  });
+};
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+getFont(); // Search font array
 
-function updateLink(link) {
-  var newLink = link.cloneNode();
+var filterItems = function filterItems(arr, query) {
+  return arr.includes(function (el) {
+    return el.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+  });
+}; // Event listeners
+// Change sample text
 
-  newLink.onload = function () {
-    link.remove();
-  };
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
+changeText.addEventListener('input', function (event) {
+  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+  var formValue = event.target.value;
+  event.preventDefault();
+  textField.forEach(function (text) {
+    text.textContent = formValue;
+  });
+}); // Change font size -- defaults to 20px
 
-var cssTimeout = null;
+fontSize.addEventListener('input', function (event) {
+  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+  var currentFontSize = event.target.value;
+  console.log(currentFontSize); // event.preventDefault()
 
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  textField.forEach(function (text) {
+    text.style.fontSize = currentFontSize;
+  });
+});
+},{"../data/fontData":"data/fontData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +429,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.77bb5cfd.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
+//# sourceMappingURL=/app.c3f9f951.js.map
