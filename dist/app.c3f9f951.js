@@ -219,12 +219,19 @@ var filterItems = function filterItems(arr, query) {
 
 
 changeText.addEventListener('input', function (event) {
-  var formValue = event.target.value;
+  var formValue = event.target.value.trim();
   var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   event.preventDefault();
-  textField.forEach(function (text) {
-    text.textContent = formValue;
-  });
+
+  if (formValue !== '') {
+    textField.forEach(function (text) {
+      text.textContent = formValue;
+    });
+  } else {
+    textField.forEach(function (text) {
+      text.textContent = originalSampleText;
+    });
+  }
 }); // Change font size -- defaults to 20px
 
 fontSize.addEventListener('input', function (event) {

@@ -42,13 +42,21 @@ const filterItems = (arr, query) => {
 
 // Change sample text
 changeText.addEventListener('input', (event) => {
-  let formValue = event.target.value;
+  let formValue = event.target.value.trim();
   const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 
   event.preventDefault();
-  textField.forEach((text) => {
-    text.textContent = formValue;
-  });
+
+  if (formValue !== '') {
+    textField.forEach((text) => {
+      text.textContent = formValue;
+    });
+  } else {
+    textField.forEach((text) => {
+      text.textContent = originalSampleText;
+    });
+  }
+
 });
 
 // Change font size -- defaults to 20px
