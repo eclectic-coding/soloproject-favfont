@@ -229,8 +229,6 @@ changeText.addEventListener('input', function (event) {
 fontSize.addEventListener('input', function (event) {
   var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   var currentFontSize = event.target.value;
-  console.log(currentFontSize); // event.preventDefault()
-
   textField.forEach(function (text) {
     text.style.fontSize = currentFontSize;
   });

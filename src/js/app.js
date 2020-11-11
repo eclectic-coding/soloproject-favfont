@@ -55,9 +55,6 @@ fontSize.addEventListener('input', (event) => {
   const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   let currentFontSize = event.target.value;
 
-  console.log(currentFontSize);
-  // event.preventDefault()
-
   textField.forEach(text => {
     text.style.fontSize =currentFontSize
   })
