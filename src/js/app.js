@@ -1,8 +1,8 @@
 import FONTDATA from '../data/fontData';
 
+const changeText = document.getElementById('input-text');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const fontSearch = document.getElementById('font-search');
-const changeText = document.getElementById('input-text');
 const fontSize = document.getElementById('font-size');
 const resetIcon = document.getElementById('reset-ui');
 
@@ -40,8 +40,8 @@ fontSearch.addEventListener('input', () => {
   const textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   for (let i = 0; i < fontCards.length; i++) {
-    let a = textTitle[i]
-    let txtValue = a.textContent || a.innerText
+    // let a = textTitle[i]
+    let txtValue = textTitle[i].textContent || textTitle[i].innerText
     if (txtValue.toLowerCase().indexOf(filter) > -1) {
       fontCards[i].style.display = '';
     } else {

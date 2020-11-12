@@ -194,9 +194,9 @@ var _fontData = _interopRequireDefault(require("../data/fontData"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var changeText = document.getElementById('input-text');
 var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var fontSearch = document.getElementById('font-search');
-var changeText = document.getElementById('input-text');
 var fontSize = document.getElementById('font-size');
 var resetIcon = document.getElementById('reset-ui'); // Variables
 
@@ -218,8 +218,8 @@ fontSearch.addEventListener('input', function () {
   var textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   for (var i = 0; i < fontCards.length; i++) {
-    var a = textTitle[i];
-    var txtValue = a.textContent || a.innerText;
+    // let a = textTitle[i]
+    var txtValue = textTitle[i].textContent || textTitle[i].innerText;
 
     if (txtValue.toLowerCase().indexOf(filter) > -1) {
       fontCards[i].style.display = '';
@@ -292,7 +292,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46769" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
