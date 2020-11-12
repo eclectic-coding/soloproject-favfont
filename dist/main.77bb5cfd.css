@@ -416,6 +416,13 @@ main {
     main {
       grid-template-columns: 1fr; } }
 
+.card__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 4rem;
+  margin: 4rem auto;
+  padding: 0 2rem; }
+
 .card {
   border-top: 2px solid black; }
   .card__title {

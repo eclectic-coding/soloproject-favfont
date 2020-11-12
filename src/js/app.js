@@ -5,6 +5,7 @@ const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const fontSearch = document.getElementById('font-search');
 const fontSize = document.getElementById('font-size');
 const resetIcon = document.getElementById('reset-ui');
+const gridList = document.getElementById('grid-list');
 
 // Variables
 let fontCard = document.getElementById('card-array');
@@ -79,6 +80,11 @@ fontSize.addEventListener('input', (event) => {
     text.style.fontSize = currentFontSize;
   });
 });
+
+// Change grid to list display
+gridList.addEventListener('click', (event) => {
+  fontCard.classList.toggle('card__list')
+})
 
 // Reset UI
 resetIcon.addEventListener('click', () => {

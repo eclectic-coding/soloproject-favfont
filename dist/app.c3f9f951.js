@@ -198,7 +198,8 @@ var changeText = document.getElementById('input-text');
 var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var fontSearch = document.getElementById('font-search');
 var fontSize = document.getElementById('font-size');
-var resetIcon = document.getElementById('reset-ui'); // Variables
+var resetIcon = document.getElementById('reset-ui');
+var gridList = document.getElementById('grid-list'); // Variables
 
 var fontCard = document.getElementById('card-array'); // Load fonts
 
@@ -251,6 +252,10 @@ fontSize.addEventListener('input', function (event) {
   textField.forEach(function (text) {
     text.style.fontSize = currentFontSize;
   });
+}); // Change grid to list display
+
+gridList.addEventListener('click', function (event) {
+  fontCard.classList.toggle('card__list');
 }); // Reset UI
 
 resetIcon.addEventListener('click', function () {
