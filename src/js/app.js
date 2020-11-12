@@ -4,7 +4,7 @@ const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const fontSearch = document.getElementById('font-search');
 const changeText = document.getElementById('input-text');
 const fontSize = document.getElementById('font-size');
-const resetIcon = document.getElementById('reset-ui')
+const resetIcon = document.getElementById('reset-ui');
 
 // Variables
 let fontCard = document.getElementById('card-array');
@@ -31,14 +31,25 @@ const getFont = () => {
 };
 getFont();
 
-// Search font array
-const filterItems = (arr, query) => {
-  return arr.includes(
-    el => el.toLowerCase()
-      .indexOf(query.toLowerCase()) !== -1);
-};
+/* Event listeners --------------- */
 
-// Event listeners
+// Font search filter
+fontSearch.addEventListener('input', () => {
+  let filter = fontSearch.value.trim().toLowerCase()
+  const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  const textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
+
+  for (let i = 0; i < fontCards.length; i++) {
+    let a = textTitle[i]
+    let txtValue = a.textContent || a.innerText
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      fontCards[i].style.display = '';
+    } else {
+      fontCards[i].style.display = 'none'
+    }
+  }
+})
+
 
 // Change sample text
 changeText.addEventListener('input', (event) => {
@@ -65,8 +76,8 @@ fontSize.addEventListener('input', (event) => {
   let currentFontSize = event.target.value;
 
   textField.forEach(text => {
-    text.style.fontSize = currentFontSize
-  })
+    text.style.fontSize = currentFontSize;
+  });
 });
 
 // Reset UI
@@ -75,14 +86,14 @@ resetIcon.addEventListener('click', () => {
   const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 
   textField.forEach(text => {
-    text.style.fontSize = "20px"
-  })
+    text.style.fontSize = '20px';
+  });
 
   // Reset custom text
   textField.forEach(text => {
     text.textContent = originalSampleText;
-  })
+  });
 
-})
+});
 
 

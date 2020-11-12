@@ -208,15 +208,26 @@ var getFont = function getFont() {
   });
 };
 
-getFont(); // Search font array
+getFont();
+/* Event listeners --------------- */
+// Font search filter
 
-var filterItems = function filterItems(arr, query) {
-  return arr.includes(function (el) {
-    return el.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-  });
-}; // Event listeners
-// Change sample text
+fontSearch.addEventListener('input', function () {
+  var filter = fontSearch.value.trim().toLowerCase();
+  var fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
+  for (var i = 0; i < fontCards.length; i++) {
+    var a = textTitle[i];
+    var txtValue = a.textContent || a.innerText;
+
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      fontCards[i].style.display = '';
+    } else {
+      fontCards[i].style.display = 'none';
+    }
+  }
+}); // Change sample text
 
 changeText.addEventListener('input', function (event) {
   var formValue = event.target.value.trim();
@@ -246,7 +257,7 @@ resetIcon.addEventListener('click', function () {
   // Reset font size
   var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   textField.forEach(function (text) {
-    text.style.fontSize = "20px";
+    text.style.fontSize = '20px';
   }); // Reset custom text
 
   textField.forEach(function (text) {
@@ -281,7 +292,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37257" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44387" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
