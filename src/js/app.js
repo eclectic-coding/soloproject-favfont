@@ -1,5 +1,5 @@
 import FONTDATA from '../data/fontData';
-import { resetFontSize, resetCustomText } from './reset';
+import { resetFontSize, resetCustomText, resetCardGrid } from './reset';
 
 const changeText = document.getElementById('input-text');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
@@ -8,7 +8,6 @@ const fontSize = document.getElementById('font-size');
 const resetIcon = document.getElementById('reset-ui');
 const gridList = document.getElementById('grid-list');
 
-// Variables
 let fontCard = document.getElementById('card-array');
 
 // Load fonts
@@ -35,15 +34,14 @@ getFont();
 
 /* Event listeners --------------- */
 const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
 
 // Font search filter
 fontSearch.addEventListener('input', () => {
   let filter = fontSearch.value.trim().toLowerCase()
-  const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   const textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   for (let i = 0; i < fontCards.length; i++) {
-    // let a = textTitle[i]
     let txtValue = textTitle[i].textContent || textTitle[i].innerText
     if (txtValue.toLowerCase().indexOf(filter) > -1) {
       fontCards[i].style.display = '';
@@ -93,6 +91,7 @@ resetIcon.addEventListener('click', () => {
 
   resetFontSize(textField)
   resetCustomText(textField, originalSampleText, changeText)
+  resetCardGrid(fontCards)
 });
 
 

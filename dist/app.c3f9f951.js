@@ -193,8 +193,15 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resetCustomText = exports.resetFontSize = void 0;
+exports.resetCardGrid = exports.resetCustomText = exports.resetFontSize = void 0;
 
+/*
+ * Reset function to reset UI to default state
+ *
+ * resetFontSize - set font card grid to default 20px font size
+ * resetCustomText - reset sample text to default
+ * resetCardGrid - reset to font search and card grid to default
+ */
 var resetFontSize = function resetFontSize(field) {
   // Reset font size
   field.forEach(function (text) {
@@ -206,8 +213,6 @@ exports.resetFontSize = resetFontSize;
 
 var resetCustomText = function resetCustomText(field, sample, change) {
   // Reset custom text
-  // const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
-  // console.log(textField);
   field.forEach(function (text) {
     text.textContent = sample;
   });
@@ -215,6 +220,17 @@ var resetCustomText = function resetCustomText(field, sample, change) {
 };
 
 exports.resetCustomText = resetCustomText;
+
+var resetCardGrid = function resetCardGrid(fontCards) {
+  // Reset font name search grid
+  document.getElementById('font-search').value = '';
+
+  for (var i = 0; i < fontCards.length; i++) {
+    fontCards[i].style.display = '';
+  }
+};
+
+exports.resetCardGrid = resetCardGrid;
 },{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -229,8 +245,7 @@ var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var fontSearch = document.getElementById('font-search');
 var fontSize = document.getElementById('font-size');
 var resetIcon = document.getElementById('reset-ui');
-var gridList = document.getElementById('grid-list'); // Variables
-
+var gridList = document.getElementById('grid-list');
 var fontCard = document.getElementById('card-array'); // Load fonts
 
 var getFont = function getFont() {
@@ -242,15 +257,14 @@ var getFont = function getFont() {
 getFont();
 /* Event listeners --------------- */
 
-var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text')); // Font search filter
+var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+var fontCards = Array.prototype.slice.call(document.querySelectorAll('.card')); // Font search filter
 
 fontSearch.addEventListener('input', function () {
   var filter = fontSearch.value.trim().toLowerCase();
-  var fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   for (var i = 0; i < fontCards.length; i++) {
-    // let a = textTitle[i]
     var txtValue = textTitle[i].textContent || textTitle[i].innerText;
 
     if (txtValue.toLowerCase().indexOf(filter) > -1) {
@@ -292,6 +306,7 @@ gridList.addEventListener('click', function (event) {
 resetIcon.addEventListener('click', function () {
   (0, _reset.resetFontSize)(textField);
   (0, _reset.resetCustomText)(textField, originalSampleText, changeText);
+  (0, _reset.resetCardGrid)(fontCards);
 });
 },{"../data/fontData":"data/fontData.js","./reset":"js/reset.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -321,7 +336,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38797" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
