@@ -1,4 +1,5 @@
 import FONTDATA from '../data/fontData';
+import { resetFontSize, resetCustomText } from './reset';
 
 const changeText = document.getElementById('input-text');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
@@ -33,6 +34,7 @@ const getFont = () => {
 getFont();
 
 /* Event listeners --------------- */
+const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 
 // Font search filter
 fontSearch.addEventListener('input', () => {
@@ -88,18 +90,9 @@ gridList.addEventListener('click', (event) => {
 
 // Reset UI
 resetIcon.addEventListener('click', () => {
-  // Reset font size
-  const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 
-  textField.forEach(text => {
-    text.style.fontSize = '20px';
-  });
-
-  // Reset custom text
-  textField.forEach(text => {
-    text.textContent = originalSampleText;
-  });
-
+  resetFontSize(textField)
+  resetCustomText(textField, originalSampleText, changeText)
 });
 
 

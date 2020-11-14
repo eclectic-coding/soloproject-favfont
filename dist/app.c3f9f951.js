@@ -187,10 +187,40 @@ var fontData = [{
 }];
 var _default = fontData;
 exports.default = _default;
+},{}],"js/reset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.resetCustomText = exports.resetFontSize = void 0;
+
+var resetFontSize = function resetFontSize(field) {
+  // Reset font size
+  field.forEach(function (text) {
+    text.style.fontSize = '20px';
+  });
+};
+
+exports.resetFontSize = resetFontSize;
+
+var resetCustomText = function resetCustomText(field, sample, change) {
+  // Reset custom text
+  // const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+  // console.log(textField);
+  field.forEach(function (text) {
+    text.textContent = sample;
+  });
+  change.value = '';
+};
+
+exports.resetCustomText = resetCustomText;
 },{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
 var _fontData = _interopRequireDefault(require("../data/fontData"));
+
+var _reset = require("./reset");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -211,7 +241,8 @@ var getFont = function getFont() {
 
 getFont();
 /* Event listeners --------------- */
-// Font search filter
+
+var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text')); // Font search filter
 
 fontSearch.addEventListener('input', function () {
   var filter = fontSearch.value.trim().toLowerCase();
@@ -259,17 +290,10 @@ gridList.addEventListener('click', function (event) {
 }); // Reset UI
 
 resetIcon.addEventListener('click', function () {
-  // Reset font size
-  var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
-  textField.forEach(function (text) {
-    text.style.fontSize = '20px';
-  }); // Reset custom text
-
-  textField.forEach(function (text) {
-    text.textContent = originalSampleText;
-  });
+  (0, _reset.resetFontSize)(textField);
+  (0, _reset.resetCustomText)(textField, originalSampleText, changeText);
 });
-},{"../data/fontData":"data/fontData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../data/fontData":"data/fontData.js","./reset":"js/reset.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -297,7 +321,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46769" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
