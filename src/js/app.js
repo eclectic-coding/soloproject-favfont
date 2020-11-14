@@ -1,16 +1,17 @@
 import FONTDATA from '../data/fontData';
 import { resetFontSize, resetCustomText, resetCardGrid } from './reset';
+import { changeSampleText, fontCardSearch } from './searchBar';
 
 const changeText = document.getElementById('input-text');
-const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const fontSearch = document.getElementById('font-search');
 const fontSize = document.getElementById('font-size');
-const resetIcon = document.getElementById('reset-ui');
 const gridList = document.getElementById('grid-list');
+const originalSampleText = 'Almost before we knew it, we had left the ground.';
+const resetIcon = document.getElementById('reset-ui');
 
 let fontCard = document.getElementById('card-array');
 
-// Load fonts
+// Load font card - UI
 const getFont = () => {
   FONTDATA.map(font => (
     fontCard.innerHTML += `
@@ -36,40 +37,11 @@ getFont();
 const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
 const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
 
-// Font search filter
-fontSearch.addEventListener('input', () => {
-  let filter = fontSearch.value.trim().toLowerCase()
-  const textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
+// Search for and filter font cards
+fontSearch.addEventListener('input', () => fontCardSearch(fontSearch, fontCards))
 
-  for (let i = 0; i < fontCards.length; i++) {
-    let txtValue = textTitle[i].textContent || textTitle[i].innerText
-    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-      fontCards[i].style.display = '';
-    } else {
-      fontCards[i].style.display = 'none'
-    }
-  }
-})
-
-
-// Change sample text
-changeText.addEventListener('input', (event) => {
-  let formValue = event.target.value.trim();
-  const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
-
-  event.preventDefault();
-
-  if (formValue !== '') {
-    textField.forEach((text) => {
-      text.textContent = formValue;
-    });
-  } else {
-    textField.forEach((text) => {
-      text.textContent = originalSampleText;
-    });
-  }
-
-});
+// Change font card sample text
+changeText.addEventListener('input', (event) => changeSampleText(event))
 
 // Change font size -- defaults to 20px
 fontSize.addEventListener('input', (event) => {
@@ -93,5 +65,3 @@ resetIcon.addEventListener('click', () => {
   resetCustomText(textField, originalSampleText, changeText)
   resetCardGrid(fontCards)
 });
-
-

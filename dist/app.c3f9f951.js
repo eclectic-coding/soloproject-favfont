@@ -231,36 +231,15 @@ var resetCardGrid = function resetCardGrid(fontCards) {
 };
 
 exports.resetCardGrid = resetCardGrid;
-},{}],"js/app.js":[function(require,module,exports) {
+},{}],"js/searchBar.js":[function(require,module,exports) {
 "use strict";
 
-var _fontData = _interopRequireDefault(require("../data/fontData"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.changeSampleText = exports.fontCardSearch = void 0;
 
-var _reset = require("./reset");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var changeText = document.getElementById('input-text');
-var originalSampleText = 'Almost before we knew it, we had left the ground.';
-var fontSearch = document.getElementById('font-search');
-var fontSize = document.getElementById('font-size');
-var resetIcon = document.getElementById('reset-ui');
-var gridList = document.getElementById('grid-list');
-var fontCard = document.getElementById('card-array'); // Load fonts
-
-var getFont = function getFont() {
-  _fontData.default.map(function (font) {
-    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
-  });
-};
-
-getFont();
-/* Event listeners --------------- */
-
-var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
-var fontCards = Array.prototype.slice.call(document.querySelectorAll('.card')); // Font search filter
-
-fontSearch.addEventListener('input', function () {
+var fontCardSearch = function fontCardSearch(fontSearch, fontCards) {
   var filter = fontSearch.value.trim().toLowerCase();
   var textTitle = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
@@ -273,9 +252,11 @@ fontSearch.addEventListener('input', function () {
       fontCards[i].style.display = 'none';
     }
   }
-}); // Change sample text
+};
 
-changeText.addEventListener('input', function (event) {
+exports.fontCardSearch = fontCardSearch;
+
+var changeSampleText = function changeSampleText(event) {
   var formValue = event.target.value.trim();
   var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
   event.preventDefault();
@@ -289,6 +270,46 @@ changeText.addEventListener('input', function (event) {
       text.textContent = originalSampleText;
     });
   }
+};
+
+exports.changeSampleText = changeSampleText;
+},{}],"js/app.js":[function(require,module,exports) {
+"use strict";
+
+var _fontData = _interopRequireDefault(require("../data/fontData"));
+
+var _reset = require("./reset");
+
+var _searchBar = require("./searchBar");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var changeText = document.getElementById('input-text');
+var fontSearch = document.getElementById('font-search');
+var fontSize = document.getElementById('font-size');
+var gridList = document.getElementById('grid-list');
+var originalSampleText = 'Almost before we knew it, we had left the ground.';
+var resetIcon = document.getElementById('reset-ui');
+var fontCard = document.getElementById('card-array'); // Load font card - UI
+
+var getFont = function getFont() {
+  _fontData.default.map(function (font) {
+    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
+  });
+};
+
+getFont();
+/* Event listeners --------------- */
+
+var textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));
+var fontCards = Array.prototype.slice.call(document.querySelectorAll('.card')); // Search for and filter font cards
+
+fontSearch.addEventListener('input', function () {
+  return (0, _searchBar.fontCardSearch)(fontSearch, fontCards);
+}); // Change font card sample text
+
+changeText.addEventListener('input', function (event) {
+  return (0, _searchBar.changeSampleText)(event);
 }); // Change font size -- defaults to 20px
 
 fontSize.addEventListener('input', function (event) {
@@ -308,7 +329,7 @@ resetIcon.addEventListener('click', function () {
   (0, _reset.resetCustomText)(textField, originalSampleText, changeText);
   (0, _reset.resetCardGrid)(fontCards);
 });
-},{"../data/fontData":"data/fontData.js","./reset":"js/reset.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../data/fontData":"data/fontData.js","./reset":"js/reset.js","./searchBar":"js/searchBar.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
