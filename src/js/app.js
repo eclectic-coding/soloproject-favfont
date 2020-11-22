@@ -58,7 +58,8 @@ fontSize.addEventListener('input', (event) => {
 
 // Change color
 changeColor.addEventListener('click', () => {
-    colorSettings("white")
+  alert('Change color')
+    // colorSettings("white")
 })
 
 // Change grid to list display

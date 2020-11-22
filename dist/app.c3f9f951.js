@@ -344,7 +344,7 @@ fontSize.addEventListener('input', function (event) {
 }); // Change color
 
 changeColor.addEventListener('click', function () {
-  (0, _settings.colorSettings)("white");
+  alert('Change color'); // colorSettings("white")
 }); // Change grid to list display
 
 gridList.addEventListener('click', function (event) {
@@ -384,7 +384,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41711" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40067" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

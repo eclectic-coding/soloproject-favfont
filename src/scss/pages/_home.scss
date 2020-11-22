@@ -31,6 +31,15 @@ main {
 .card {
   border-top: 2px solid var(--mode-color-foreground, black);
 
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0 4px 8px rgba(38, 38, 38, 0.2);
+    top: -8px;
+    left: -8px;
+    padding: 2px;
+
+  }
+
   &__title {
     display: flex;
     justify-content: space-between;
