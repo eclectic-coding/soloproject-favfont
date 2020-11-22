@@ -29,7 +29,7 @@ main {
 }
 
 .card {
-  border-top: 2px solid black;
+  border-top: 2px solid var(--mode-color-foreground, black);
 
   &__title {
     display: flex;
@@ -39,6 +39,7 @@ main {
 
     h2 {
       margin: 0;
+      color: var(--mode-color-foreground, black);
     }
 
     span {
@@ -58,7 +59,7 @@ main {
   &__subtitle {
     margin: 0;
     font-weight: normal;
-    color: $mid-grey;
+    color: var(--mode-color-foreground, black);
   }
 
   &__bodytext {

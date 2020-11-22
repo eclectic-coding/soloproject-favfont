@@ -16,17 +16,21 @@
 }
 
 :root {
+  --mode-color-background: white;
+  --mode-color-foreground: black;
   font-size: 62.5%; // 10px as 1 rem == 16px = 1.6 rem
   font-family: $text-font-stack;
 }
 
 body {
   box-sizing: border-box;
+  background-color: var(--mode-color-background, white);
+  color: var(--mode-color-foreground, black);
 }
 
 a {
   text-decoration: none;
-  color: $dark-grey;
+  color: var(--mode-color-foreground, black);
 }
 
 .container {

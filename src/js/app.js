@@ -1,8 +1,11 @@
 import FONTDATA from '../data/fontData';
 import { resetFontSize, resetCustomText, resetCardGrid } from './reset';
 import { changeSampleText, fontCardSearch } from './searchBar';
+import { colorSettings } from './settings';
+
 
 const changeText = document.getElementById('input-text');
+const changeColor = document.getElementById('dark-mode-toggle');
 const fontSearch = document.getElementById('font-search');
 const fontSize = document.getElementById('font-size');
 const gridList = document.getElementById('grid-list');
@@ -52,6 +55,11 @@ fontSize.addEventListener('input', (event) => {
     text.style.fontSize = currentFontSize;
   });
 });
+
+// Change color
+changeColor.addEventListener('click', () => {
+    colorSettings("white")
+})
 
 // Change grid to list display
 gridList.addEventListener('click', (event) => {
