@@ -7,29 +7,4 @@
 $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
 'Helvetica', 'Arial', sans-serif;
 
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
-'Monaco', monospace;
-
-$color-text: rgb(34,34,34);
-
-
-$color-black: rgb(0,0,0);
-$color-white: rgb(255,255,255);
-
-/// Grey palette
-$light-grey: rgb(237, 237, 237);
-$mid-grey: rgb(153, 153, 153);
-$dark-grey: rgb(68, 68, 68);
-
-/// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: (
-        'xs': 320px,
-        'sm': 576px,
-        'mg': 768px,
-        'lg': 992px,
-        'xl': 1200px
-);
+$default-font-color: rgb(68, 68, 68);

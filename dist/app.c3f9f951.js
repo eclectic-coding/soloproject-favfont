@@ -313,11 +313,12 @@ var fontSize = document.getElementById('font-size');
 var gridList = document.getElementById('grid-list');
 var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var resetIcon = document.getElementById('reset-ui');
+var addFont = document.getElementById('add-font');
 var fontCard = document.getElementById('card-array'); // Load font card - UI
 
 var getFont = function getFont() {
   _fontData.default.map(function (font) {
-    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
+    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\" id=\"add-font\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
   });
 };
 
@@ -344,7 +345,8 @@ fontSize.addEventListener('input', function (event) {
 }); // Change color
 
 changeColor.addEventListener('click', function () {
-  alert('Change color'); // colorSettings("white")
+  alert('Change color');
+  (0, _settings.colorSettings)("white");
 }); // Change grid to list display
 
 gridList.addEventListener('click', function (event) {
@@ -384,7 +386,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40067" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44481" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
