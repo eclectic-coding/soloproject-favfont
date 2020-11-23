@@ -2,21 +2,23 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 4rem;
-  margin: 4rem auto;
+  margin: 0 4rem;
   padding: 0 2rem;
 
   @media (max-width: 968px) {
     grid-template-columns: repeat(3, 1fr);
+    margin: 0 2rem;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-
+    margin: 0 1rem;
   }
 
   @media (max-width: 568px) {
     grid-template-columns: 1fr;
-
+    margin: 0 1rem;
+    width: 90vw;
   }
 }
 
