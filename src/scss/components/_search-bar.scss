@@ -19,7 +19,7 @@
     border: 1px solid grey;
     border-left: none;
     border-right: none;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   }
 
   select {
@@ -27,6 +27,7 @@
     margin: 10px 0;
     border: 1px solid grey;
     background-color: white;
+    appearance: none;
   }
 
   span {

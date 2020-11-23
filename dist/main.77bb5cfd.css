@@ -399,7 +399,8 @@ footer {
     padding: 5px;
     margin: 10px 0;
     border: 1px solid grey;
-    background-color: white; }
+    background-color: white;
+    appearance: none; }
   .search__container span {
     margin-left: 1rem;
     cursor: pointer; }
