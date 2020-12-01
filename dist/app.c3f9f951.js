@@ -193,7 +193,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resetCardGrid = exports.resetCustomText = exports.resetFontSize = void 0;
+exports.resetColorMode = exports.resetCardGrid = exports.resetCustomText = exports.resetFontSize = void 0;
 
 /*
  * Reset function to reset UI to default state
@@ -221,16 +221,24 @@ var resetCustomText = function resetCustomText(field, sample, change) {
 
 exports.resetCustomText = resetCustomText;
 
-var resetCardGrid = function resetCardGrid(fontCards) {
-  // Reset font name search grid
-  document.getElementById('font-search').value = '';
+var resetCardGrid = function resetCardGrid() {
+  // Reset card default text
+  document.getElementById('font-search').value = ''; // Reset cards to from list to grid
 
-  for (var i = 0; i < fontCards.length; i++) {
-    fontCards[i].style.display = '';
-  }
+  document.getElementById('card-array').classList.remove('card__list');
 };
 
 exports.resetCardGrid = resetCardGrid;
+
+var resetColorMode = function resetColorMode() {
+  var darkClass = document.querySelector('html').classList.contains('dark-mode');
+
+  if (darkClass) {
+    document.querySelector('html').classList.remove('dark-mode');
+  }
+};
+
+exports.resetColorMode = resetColorMode;
 },{}],"js/searchBar.js":[function(require,module,exports) {
 "use strict";
 
@@ -284,7 +292,6 @@ var _searchBar = require("./searchBar");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { colorSettings } from './settings';
 var changeText = document.getElementById('input-text');
 var changeColor = document.getElementById('dark-mode-toggle');
 var fontSearch = document.getElementById('font-search');
@@ -333,7 +340,8 @@ gridList.addEventListener('click', function (event) {
 resetIcon.addEventListener('click', function () {
   (0, _reset.resetFontSize)(textField);
   (0, _reset.resetCustomText)(textField, originalSampleText, changeText);
-  (0, _reset.resetCardGrid)(fontCards);
+  (0, _reset.resetCardGrid)();
+  (0, _reset.resetColorMode)();
 });
 },{"../data/fontData":"data/fontData.js","./reset":"js/reset.js","./searchBar":"js/searchBar.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

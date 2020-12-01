@@ -24,7 +24,7 @@
 body {
   box-sizing: border-box;
   background-color: var(--bg);
-  color: var(--mode-color-foreground, #444444); }
+  color: var(--color); }
 
 a {
   text-decoration: none;
@@ -473,8 +473,10 @@ main {
     display: flex;
     justify-content: flex-end;
     align-content: center;
-    color: red;
+    color: var(--color);
     cursor: pointer; }
+  .card__gridlist {
+    color: var(--color); }
   .card__subtitle {
     margin: 0;
     font-weight: normal;

@@ -1,8 +1,6 @@
 import FONTDATA from '../data/fontData';
-import { resetFontSize, resetCustomText, resetCardGrid } from './reset';
+import { resetFontSize, resetCustomText, resetCardGrid, resetColorMode } from './reset';
 import { changeSampleText, fontCardSearch } from './searchBar';
-// import { colorSettings } from './settings';
-
 
 const changeText = document.getElementById('input-text');
 const changeColor = document.getElementById('dark-mode-toggle');
@@ -71,5 +69,6 @@ resetIcon.addEventListener('click', () => {
 
   resetFontSize(textField)
   resetCustomText(textField, originalSampleText, changeText)
-  resetCardGrid(fontCards)
+  resetCardGrid()
+  resetColorMode()
 });

@@ -63,8 +63,12 @@ main {
     display: flex;
     justify-content: flex-end;
     align-content: center;
-    color: red;
+    color: var(--color);
     cursor: pointer;
+  }
+
+  &__gridlist {
+    color: var(--color);
   }
 
   &__subtitle {

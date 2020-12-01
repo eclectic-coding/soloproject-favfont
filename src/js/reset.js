@@ -20,12 +20,20 @@ export const resetCustomText = (field, sample, change) => {
   change.value = '';
 };
 
-export const resetCardGrid = (fontCards) => {
-  // Reset font name search grid
+export const resetCardGrid = () => {
+  // Reset card default text
   document.getElementById('font-search').value = '';
-  for (let i = 0; i < fontCards.length; i++) {
-    fontCards[i].style.display = '';
-  }
+
+  // Reset cards to from list to grid
+  document.getElementById('card-array').classList.remove('card__list');
 
 };
+
+export const resetColorMode = () => {
+  const darkClass = document.querySelector('html').classList.contains('dark-mode')
+  if (darkClass) {
+    document.querySelector('html').classList.remove('dark-mode')
+  }
+
+}
 
