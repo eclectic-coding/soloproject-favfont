@@ -359,13 +359,18 @@ footer {
   padding: 0.5rem;
   text-align: center;
   font-size: 1.4rem;
-  color: var(--color);
-  display: flex;
-  justify-content: center; }
+  color: var(--color); }
   footer .media__icons {
-    display: flex;
-    justify-content: center;
-    margin: 0 1rem; }
+    margin: 0 2rem;
+    color: var(--color);
+    font-size: 2rem; }
+    footer .media__icons--dev, footer .media__icons--github, footer .media__icons--linkedin, footer .media__icons--twitter {
+      margin: 0.5rem; }
+
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .navigation {
   display: flex;
