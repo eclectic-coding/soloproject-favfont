@@ -1,5 +1,5 @@
 import FONTDATA from '../data/fontData';
-import { resetFontSize, resetCustomText, resetCardGrid, resetColorMode } from './reset';
+import { resetFontSize, resetCustomText, resetCardGrid, resetColorMode, resetFontSearch } from './reset';
 import { changeSampleText, fontCardSearch } from './searchBar';
 import { closeNav, openNav } from './navigation';
 
@@ -10,8 +10,8 @@ const fontSize = document.getElementById('font-size');
 const gridList = document.getElementById('grid-list');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const resetIcon = document.getElementById('reset-ui');
-const navButton = document.getElementById('main-menu-toggle')
-const closeButton = document.getElementById('close')
+const navButton = document.getElementById('main-menu-toggle');
+const closeButton = document.getElementById('close');
 
 let fontCard = document.getElementById('card-array');
 
@@ -42,10 +42,10 @@ const textField = Array.prototype.slice.call(document.querySelectorAll('#body-te
 const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
 
 // Search for and filter font cards
-fontSearch.addEventListener('input', () => fontCardSearch(fontSearch, fontCards))
+fontSearch.addEventListener('input', () => fontCardSearch(fontSearch, fontCards));
 
 // Change font card sample text
-changeText.addEventListener('input', (event) => changeSampleText(event))
+changeText.addEventListener('input', (event) => changeSampleText(event));
 
 // Change font size -- defaults to 20px
 fontSize.addEventListener('input', (event) => {
@@ -59,25 +59,26 @@ fontSize.addEventListener('input', (event) => {
 
 // Change color
 changeColor.addEventListener('click', () => {
-  document.querySelector('html').classList.toggle('dark-mode')
-})
+  document.querySelector('html').classList.toggle('dark-mode');
+});
 
 // Change grid to list display
 gridList.addEventListener('click', (event) => {
-  fontCard.classList.toggle('card__list')
-})
+  fontCard.classList.toggle('card__list');
+});
 
 // Navigation toggle
-navButton.addEventListener('click', openNav)
+navButton.addEventListener('click', openNav);
 
 // Close side menu
-closeButton.addEventListener('click', closeNav)
+closeButton.addEventListener('click', closeNav);
 
 // Reset UI
 resetIcon.addEventListener('click', () => {
 
-  resetFontSize(textField)
-  resetCustomText(textField, originalSampleText, changeText)
-  resetCardGrid()
-  resetColorMode()
+  resetFontSearch(fontCards);
+  resetFontSize(textField);
+  resetCustomText(textField, originalSampleText, changeText);
+  resetCardGrid();
+  resetColorMode();
 });

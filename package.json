@@ -11,7 +11,7 @@
   "scripts": {
     "start": "parcel serve ./src/index.html --port 3000 --open",
     "dev": "npm run clean && npm run start",
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --out-dir public",
     "clean": "rm -rf ./.parcel-cache ./dist"
   },
   "devDependencies": {
