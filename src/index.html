@@ -14,12 +14,12 @@
   <title>Favorite Fonts</title>
 </head>
 <body class="container dark">
-<nav role="navigation dark" class="navigation">
-  <div class="navigation__brand dark">
+<nav role="navigation" class="navigation">
+  <h1 class="navigation__brand">
     <a href="/">Favorite Fonts</a>
-  </div>
+  </h1>
   <div>
-    <ul class="navigation__menu dark">
+    <ul class="navigation__menu">
       <li class="item">Catalog</li>
       <li class="item">Featured</li>
       <li class="item">Articles</li>
@@ -29,9 +29,10 @@
 </nav>
 <header>
   <div class="search__container">
-    <input class="search__font-search" type="search" id="font-search" placeholder="Search fonts">
-    <input type="text" id="input-text" placeholder="Type Something">
-    <select name="font-size" id="font-size">
+    <input class="search__font-search" type="search" id="font-search" placeholder="Search fonts"
+           aria-label="Search fonts input">
+    <input type="text" id="input-text" placeholder="Type Something" aria-label="Change the default sample text">
+    <select name="font-size" id="font-size" aria-label="Select font size">
       <option value="20px">20px</option>
       <option value="24px">24px</option>
       <option value="32px">32px</option>
@@ -55,10 +56,15 @@
     <a href="https://chucksmith.dev" target="_blank">&nbsp;Chuck Smith</a>
   </div>
   <div class="media__icons">
-    <a href="https://dev.to/eclecticcoding" target="_blank"><i class="fab fa-dev media__icons--dev"></i></a>
-    <a href="https://github.com/eclectic-coding" target="_blank"><i class="fab fa-github media__icons--github"></i></a>
-    <a href="https://www.linkedin.com/in/dev-chuck-smith/" target="_blank"><i class="fab fa-linkedin media__icons--linkedin"></i></a>
-    <a href="https://twitter.com/EclecticCoding" target="_blank"><i class="fab fa-twitter media__icons--twitter"></i></a>
+    <a href="https://dev.to/eclecticcoding" target="_blank" aria-label="Link to Chuck's Blog at Practical Dev"><i
+      class="fab fa-dev media__icons--dev"></i></a>
+    <a href="https://github.com/eclectic-coding" target="_blank" aria-label="Link to Chuck's GitHub Profile"><i
+      class="fab fa-github media__icons--github"></i></a>
+    <a href="https://www.linkedin.com/in/dev-chuck-smith/" target="_blank"
+       aria-label="Link to Chuck's LinkedIn Profile"><i
+      class="fab fa-linkedin media__icons--linkedin"></i></a>
+    <a href="https://twitter.com/EclecticCoding" target="_blank" aria-label="Link to Chuck's Twitter"><i
+      class="fab fa-twitter media__icons--twitter"></i></a>
   </div>
 </footer>
 
