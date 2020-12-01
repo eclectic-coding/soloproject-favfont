@@ -1,6 +1,7 @@
 import FONTDATA from '../data/fontData';
 import { resetFontSize, resetCustomText, resetCardGrid, resetColorMode } from './reset';
 import { changeSampleText, fontCardSearch } from './searchBar';
+import { closeNav, openNav } from './navigation';
 
 const changeText = document.getElementById('input-text');
 const changeColor = document.getElementById('dark-mode-toggle');
@@ -9,6 +10,8 @@ const fontSize = document.getElementById('font-size');
 const gridList = document.getElementById('grid-list');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const resetIcon = document.getElementById('reset-ui');
+const navButton = document.getElementById('main-menu-toggle')
+const closeButton = document.getElementById('close')
 
 let fontCard = document.getElementById('card-array');
 
@@ -63,6 +66,12 @@ changeColor.addEventListener('click', () => {
 gridList.addEventListener('click', (event) => {
   fontCard.classList.toggle('card__list')
 })
+
+// Navigation toggle
+navButton.addEventListener('click', openNav)
+
+// Close side menu
+closeButton.addEventListener('click', closeNav)
 
 // Reset UI
 resetIcon.addEventListener('click', () => {
