@@ -1,7 +1,7 @@
 import FONTDATA from '../data/fontData';
 import { resetFontSize, resetCustomText, resetCardGrid } from './reset';
 import { changeSampleText, fontCardSearch } from './searchBar';
-import { colorSettings } from './settings';
+// import { colorSettings } from './settings';
 
 
 const changeText = document.getElementById('input-text');
@@ -11,7 +11,6 @@ const fontSize = document.getElementById('font-size');
 const gridList = document.getElementById('grid-list');
 const originalSampleText = 'Almost before we knew it, we had left the ground.';
 const resetIcon = document.getElementById('reset-ui');
-const addFont = document.getElementById('add-font')
 
 let fontCard = document.getElementById('card-array');
 
@@ -22,7 +21,7 @@ const getFont = () => {
         <div class="card">
           <div class="card__title">
             <h2>${font.name}</h2>
-            <span><i class="far fa-plus-square card__icon" id="add-font"></i></span>
+            <span><i class="far fa-plus-square card__icon"></i></span>
           </div>
           <p class="card__subtitle">${font.designer}</p>
           <p id="body-text"
@@ -59,8 +58,7 @@ fontSize.addEventListener('input', (event) => {
 
 // Change color
 changeColor.addEventListener('click', () => {
-  alert('Change color')
-    colorSettings("white")
+  document.querySelector('html').classList.toggle('dark-mode')
 })
 
 // Change grid to list display

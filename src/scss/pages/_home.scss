@@ -31,11 +31,11 @@ main {
 }
 
 .card {
-  border-top: 2px solid var(--mode-color-foreground, black);
+  border-top: 2px solid var(--color);
 
   &:hover {
     transition: all 0.2s ease-out;
-    box-shadow: 0 4px 8px rgba(38, 38, 38, 0.2);
+    box-shadow: 0 4px 8px var(--color);
     top: -8px;
     left: -8px;
     padding: 2px;
@@ -50,7 +50,7 @@ main {
 
     h2 {
       margin: 0;
-      color: var(--mode-color-foreground, black);
+      color: var(--color);
     }
 
     span {
@@ -70,13 +70,14 @@ main {
   &__subtitle {
     margin: 0;
     font-weight: normal;
-    color: var(--mode-color-foreground, black);
+    color: var(--color);
   }
 
   &__bodytext {
     font-weight: normal;
     padding: 0 1rem;
     font-size: 20px;
+    color: var(--color);
   }
 }
 

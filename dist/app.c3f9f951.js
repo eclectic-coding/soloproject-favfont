@@ -273,26 +273,6 @@ var changeSampleText = function changeSampleText(event) {
 };
 
 exports.changeSampleText = changeSampleText;
-},{}],"js/settings.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.colorSettings = void 0;
-
-var colorSettings = function colorSettings(setColor) {
-  if (setColor === 'white') {
-    document.documentElement.style.setProperty('--mode-color-background', 'black');
-    document.documentElement.style.setProperty('--mode-color-foreground', 'white');
-    document.getElementById('dark-mode-toggle').classList.remove('fa-fa-adjust');
-  } else {
-    document.documentElement.style.setProperty('--mode-color-background', 'white');
-    document.documentElement.style.setProperty('--mode-color-foreground', 'black');
-  }
-};
-
-exports.colorSettings = colorSettings;
 },{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -302,10 +282,9 @@ var _reset = require("./reset");
 
 var _searchBar = require("./searchBar");
 
-var _settings = require("./settings");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import { colorSettings } from './settings';
 var changeText = document.getElementById('input-text');
 var changeColor = document.getElementById('dark-mode-toggle');
 var fontSearch = document.getElementById('font-search');
@@ -313,12 +292,11 @@ var fontSize = document.getElementById('font-size');
 var gridList = document.getElementById('grid-list');
 var originalSampleText = 'Almost before we knew it, we had left the ground.';
 var resetIcon = document.getElementById('reset-ui');
-var addFont = document.getElementById('add-font');
 var fontCard = document.getElementById('card-array'); // Load font card - UI
 
 var getFont = function getFont() {
   _fontData.default.map(function (font) {
-    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\" id=\"add-font\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
+    return fontCard.innerHTML += "\n        <div class=\"card\">\n          <div class=\"card__title\">\n            <h2>".concat(font.name, "</h2>\n            <span><i class=\"far fa-plus-square card__icon\"></i></span>\n          </div>\n          <p class=\"card__subtitle\">").concat(font.designer, "</p>\n          <p id=\"body-text\"\n            class=\"card__bodytext\" \n            style=\"font-family: '").concat(font.name, "', ").concat(font.fallback, "\"\n            >\n            ").concat(originalSampleText, "\n          </p>\n        </div>\n      ");
   });
 };
 
@@ -345,8 +323,7 @@ fontSize.addEventListener('input', function (event) {
 }); // Change color
 
 changeColor.addEventListener('click', function () {
-  alert('Change color');
-  (0, _settings.colorSettings)("white");
+  document.querySelector('html').classList.toggle('dark-mode');
 }); // Change grid to list display
 
 gridList.addEventListener('click', function (event) {
@@ -358,7 +335,7 @@ resetIcon.addEventListener('click', function () {
   (0, _reset.resetCustomText)(textField, originalSampleText, changeText);
   (0, _reset.resetCardGrid)(fontCards);
 });
-},{"../data/fontData":"data/fontData.js","./reset":"js/reset.js","./searchBar":"js/searchBar.js","./settings":"js/settings.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../data/fontData":"data/fontData.js","./reset":"js/reset.js","./searchBar":"js/searchBar.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -386,7 +363,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44481" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38771" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

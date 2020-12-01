@@ -16,21 +16,28 @@
 }
 
 :root {
-  --mode-color-background: white;
-  --mode-color-foreground: black;
+  --color: #243746;
+  --bg: #fff;
+  --border-color: #ddd;
   font-size: 62.5%; // 10px as 1 rem == 16px = 1.6 rem
   font-family: $text-font-stack;
 }
 
+.dark-mode {
+  --color: #A6A6A6;
+  --bg: #091a28;
+  --border-color: #0d2538;
+}
+
 body {
   box-sizing: border-box;
-  background-color: var(--mode-color-background, white);
-  color: var(--mode-color-foreground, black);
+  background-color: var(--bg);
+  color: var(--mode-color-foreground, $default-font-color);
 }
 
 a {
   text-decoration: none;
-  color: var(--mode-color-foreground, black);
+  color: var(--color);
 }
 
 .container {

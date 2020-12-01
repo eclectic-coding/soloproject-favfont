@@ -5,6 +5,6 @@ export const colorSettings = (setColor) => {
     document.getElementById('dark-mode-toggle').classList.remove('fa-fa-adjust')
   } else {
     document.documentElement.style.setProperty('--mode-color-background', 'white')
-    document.documentElement.style.setProperty('--mode-color-foreground', 'black')
+    document.documentElement.style.setProperty('--mode-color-foreground', '')
   }
 }
