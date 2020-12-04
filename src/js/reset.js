@@ -9,7 +9,6 @@
  */
 
 export const resetFontSearch = (fontCards) => {
-  console.log('Reset font search');
   document.getElementById('font-search').value = '';
 
   for (let i = 0; i < fontCards.length; i++) {

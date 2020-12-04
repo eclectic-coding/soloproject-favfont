@@ -13,7 +13,7 @@ export const fontCardSearch = (fontSearch, fontCards) => {
   }
 };
 
-export const changeSampleText = (event) => {
+export const changeSampleText = (event, {originalSampleText}) => {
 
   let formValue = event.target.value.trim();
   const textField = Array.prototype.slice.call(document.querySelectorAll('#body-text'));

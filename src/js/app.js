@@ -45,7 +45,7 @@ const fontCards = Array.prototype.slice.call(document.querySelectorAll('.card'))
 fontSearch.addEventListener('input', () => fontCardSearch(fontSearch, fontCards));
 
 // Change font card sample text
-changeText.addEventListener('input', (event) => changeSampleText(event));
+changeText.addEventListener('input', (event) => changeSampleText(event, {originalSampleText}));
 
 // Change font size -- defaults to 20px
 fontSize.addEventListener('input', (event) => {
